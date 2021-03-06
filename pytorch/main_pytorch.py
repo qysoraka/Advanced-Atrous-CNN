@@ -123,3 +123,151 @@ def forward(model, generate_func, cuda, return_target):
     dict['audio_name'] = audio_names
     
     if return_target:
+        targets = np.concatenate(targets, axis=0)
+        dict['target'] = targets
+        
+    return dict
+
+def train(args):
+
+    # Arugments & parameters
+    dataset_dir = args.dataset_dir
+    subdir = args.subdir
+    workspace = args.workspace
+    filename = args.filename
+    validate = args.validate
+    holdout_fold = args.holdout_fold
+    mini_data = args.mini_data
+    cuda = args.cuda
+
+    labels = config.labels
+
+    if 'mobile' in subdir:
+        devices = ['a', 'b', 'c']
+    else:
+        devices = ['a']
+
+    classes_num = len(labels)
+
+    # Paths
+    if mini_data:
+        hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir,
+                                 'mini_development.h5')
+    else:
+        hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir,
+                                 'development.h5')
+
+    if validate:
+        
+        dev_train_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup',
+                                     'fold{}_train.txt'.format(holdout_fold))
+                                    
+        dev_validate_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup',
+                                    'fold{}_evaluate.txt'.format(holdout_fold))
+                              
+        models_dir = os.path.join(workspace, 'models', subdir, filename,
+                                  'holdout_fold={}'.format(holdout_fold))
+                                        
+    else:
+        dev_train_csv = None
+        dev_validate_csv = None
+        
+        models_dir = os.path.join(workspace, 'models', subdir, filename,
+                                  'full_train')
+
+    create_folder(models_dir)
+
+    # Model
+    model = Model(classes_num)
+
+    if cuda:
+        model.cuda()
+
+    # Data generator
+    generator = DataGenerator(hdf5_path=hdf5_path,
+                              batch_size=batch_size,
+                              dev_train_csv=dev_train_csv,
+                              dev_validate_csv=dev_validate_csv)
+
+    # Optimizer
+    lr = 1e-3
+    optimizer = optim.Adam(model.parameters(), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.)
+
+
+
+    train_bgn_time = time.time()
+
+    # Train on mini batches
+    for (iteration, (batch_x, batch_y)) in enumerate(generator.generate_train()):
+
+        # Evaluate
+        if iteration % 100 == 0:
+
+            train_fin_time = time.time()
+
+            (tr_acc, tr_loss) = evaluate(model=model,
+                                         generator=generator,
+                                         data_type='train',
+                                         devices=devices,
+                                         max_iteration=None,
+                                         cuda=cuda)
+
+            logging.info('tr_acc: {:.3f}, tr_loss: {:.3f}'.format(
+                tr_acc, tr_loss))
+
+            if validate:
+                
+                (va_acc, va_loss) = evaluate(model=model,
+                                             generator=generator,
+                                             data_type='validate',
+                                             devices=devices,
+                                             max_iteration=None,
+                                             cuda=cuda)
+                                
+                logging.info('va_acc: {:.3f}, va_loss: {:.3f}'.format(
+                    va_acc, va_loss))
+
+            train_time = train_fin_time - train_bgn_time
+            validate_time = time.time() - train_fin_time
+
+            logging.info(
+                'iteration: {}, train time: {:.3f} s, validate time: {:.3f} s'
+                    ''.format(iteration, train_time, validate_time))
+
+            logging.info('------------------------------------')
+
+            train_bgn_time = time.time()
+
+        # Save model
+        if iteration % 1000 == 0 and iteration > 0:
+
+            save_out_dict = {'iteration': iteration,
+                             'state_dict': model.state_dict(),
+                             'optimizer': optimizer.state_dict()
+                             }
+            save_out_path = os.path.join(
+                models_dir, 'md_{}_iters.tar'.format(iteration))
+            torch.save(save_out_dict, save_out_path)
+            logging.info('Model saved to {}'.format(save_out_path))
+            
+        # Reduce learning rate
+        if iteration % 200 == 0 > 0:
+            for param_group in optimizer.param_groups:
+                param_group['lr'] *= 0.9
+
+        # Train
+        batch_x = move_data_to_gpu(batch_x, cuda)
+        batch_y = move_data_to_gpu(batch_y, cuda)
+
+        model.train()
+        batch_output = model(batch_x)
+
+        loss = F.nll_loss(batch_output, batch_y)
+
+        # Backward
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        # Stop learning
+        if iteration == 15000:
