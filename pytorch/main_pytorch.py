@@ -271,3 +271,156 @@ def train(args):
 
         # Stop learning
         if iteration == 15000:
+            break
+
+
+def inference_validation_data(args):
+
+    # Arugments & parameters
+    dataset_dir = args.dataset_dir
+    subdir = args.subdir
+    workspace = args.workspace
+    holdout_fold = args.holdout_fold
+    iteration = args.iteration
+    filename = args.filename
+    cuda = args.cuda
+
+    labels = config.labels
+
+    if 'mobile' in subdir:
+        devices = ['a', 'b', 'c']
+    else:
+        devices = ['a']
+
+    validation = True
+    classes_num = len(labels)
+
+    # Paths
+    hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir,
+                             'development.h5')
+
+    dev_train_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup',
+                                 'fold1_train.txt')
+                                 
+    dev_validate_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup',
+                                    'fold{}_evaluate.txt'.format(holdout_fold))
+
+    model_path = os.path.join(workspace, 'models', subdir, filename,
+                              'holdout_fold={}'.format(holdout_fold),
+                              'md_{}_iters.tar'.format(iteration))
+
+    # Load model
+    model = Model(classes_num)
+    checkpoint = torch.load(model_path)
+    model.load_state_dict(checkpoint['state_dict'])
+
+    if cuda:
+        model.cuda()
+
+    # Predict & evaluate
+    for device in devices:
+
+        print('Device: {}'.format(device))
+
+        # Data generator
+        generator = DataGenerator(hdf5_path=hdf5_path,
+                                  batch_size=batch_size,
+                                  dev_train_csv=dev_train_csv,
+                                  dev_validate_csv=dev_validate_csv)
+
+        generate_func = generator.generate_validate(data_type='validate', 
+                                                     devices=device, 
+                                                     shuffle=False)
+
+        # Inference
+        dict = forward(model=model,
+                       generate_func=generate_func, 
+                       cuda=cuda, 
+                       return_target=True)
+
+        outputs = dict['output']    # (audios_num, classes_num)
+        targets = dict['target']    # (audios_num, classes_num)
+
+        predictions = np.argmax(outputs, axis=-1)
+
+        classes_num = outputs.shape[-1]    
+
+        # Evaluate
+        confusion_matrix = calculate_confusion_matrix(
+            targets, predictions, classes_num)
+            
+        class_wise_accuracy = calculate_accuracy(targets, predictions, 
+                                                 classes_num)
+
+
+        # Print
+        print_accuracy(class_wise_accuracy, labels)
+        print('confusion_matrix: \n', confusion_matrix)
+        logging.info('confusion_matrix: \n', confusion_matrix)
+            
+     
+def inference_leaderboard_data(args):
+    
+    # Arugments & parameters
+    dataset_dir = args.dataset_dir
+    dev_subdir = args.dev_subdir
+    leaderboard_subdir = args.leaderboard_subdir
+    workspace = args.workspace
+    iteration = args.iteration
+    filename = args.filename
+    cuda = args.cuda
+
+    labels = config.labels
+    ix_to_lb = config.ix_to_lb
+
+    classes_num = len(labels)
+
+    # Paths
+    dev_hdf5_path = os.path.join(workspace, 'features', 'logmel', dev_subdir,
+                                 'development.h5')
+
+    test_hdf5_path = os.path.join(workspace, 'features', 'logmel', leaderboard_subdir,
+                                 'leaderboard.h5')
+
+    model_path = os.path.join(workspace, 'models', dev_subdir, filename,
+                              'full_train', 
+                              'md_{}_iters.tar'.format(iteration))
+
+    submission_path = os.path.join(workspace, 'submissions', leaderboard_subdir, 
+                                   filename, 'iteration={}'.format(iteration), 
+                                   'submission.csv')
+                                   
+    create_folder(os.path.dirname(submission_path))
+
+    # Load model
+    model = Model(classes_num)
+    checkpoint = torch.load(model_path)
+    model.load_state_dict(checkpoint['state_dict'])
+
+    if cuda:
+        model.cuda()
+
+    # Data generator
+    generator = TestDataGenerator(dev_hdf5_path=dev_hdf5_path,
+                                  test_hdf5_path=test_hdf5_path, 
+                                  batch_size=batch_size)
+
+    generate_func = generator.generate_test()
+
+    # Predict
+    dict = forward(model=model, 
+                   generate_func=generate_func, 
+                   cuda=cuda, 
+                   return_target=False)
+    
+    audio_names = dict['audio_name']    # (audios_num,)
+    outputs = dict['output']    # (audios_num, classes_num)
+    
+    predictions = np.argmax(outputs, axis=-1)    # (audios_num,)
+
+    # Write result to submission csv
+    write_leaderboard_submission(submission_path, audio_names, predictions)
+    
+            
+def inference_evaluation_data(args):
+    
