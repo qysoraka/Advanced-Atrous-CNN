@@ -17,4 +17,15 @@ def move_data_to_gpu(x, cuda):
         x = torch.LongTensor(x)
 
     else:
-      
+        raise Exception("Error!")
+
+    if cuda:
+        x = x.cuda()
+
+    x = Variable(x)
+
+    return x
+
+
+def init_layer(layer):
+    """Initialize a Linear 
