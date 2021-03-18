@@ -28,4 +28,6 @@ def move_data_to_gpu(x, cuda):
 
 
 def init_layer(layer):
-    """Initialize a Linear 
+    """Initialize a Linear or Convolutional layer. 
+    Ref: He, Kaiming, et al. "Delving deep into rectifiers: Surpassing 
+    human-level performance on imagenet classificati
