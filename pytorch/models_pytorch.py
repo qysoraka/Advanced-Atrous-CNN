@@ -35,4 +35,8 @@ def init_layer(layer):
     """
     
     if layer.weight.ndimension() == 4:
-        (n_o
+        (n_out, n_in, height, width) = layer.weight.size()
+        n = n_in * height * width
+        
+    elif layer.weight.ndimension() == 2:
+        (n_out, n)
