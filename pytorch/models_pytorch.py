@@ -53,4 +53,12 @@ def init_bn(bn):
     """Initialize a Batchnorm layer. """
     
     bn.bias.data.fill_(0.)
-    bn.weigh
+    bn.weight.data.fill_(1.)
+
+
+
+class EmbeddingLayers_pooling(nn.Module):
+    def __init__(self):
+        super(EmbeddingLayers_pooling, self).__init__()
+
+        self.conv1 =
