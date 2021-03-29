@@ -39,4 +39,11 @@ def init_layer(layer):
         n = n_in * height * width
         
     elif layer.weight.ndimension() == 2:
-        (n_out, n)
+        (n_out, n) = layer.weight.size()
+
+    std = math.sqrt(2. / n)
+    scale = std * math.sqrt(3.)
+    layer.weight.data.uniform_(-scale, scale)
+
+    if layer.bias is not None:
+ 
