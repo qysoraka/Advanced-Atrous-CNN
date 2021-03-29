@@ -46,4 +46,11 @@ def init_layer(layer):
     layer.weight.data.uniform_(-scale, scale)
 
     if layer.bias is not None:
- 
+        layer.bias.data.fill_(0.)
+
+
+def init_bn(bn):
+    """Initialize a Batchnorm layer. """
+    
+    bn.bias.data.fill_(0.)
+    bn.weigh
