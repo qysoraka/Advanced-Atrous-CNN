@@ -61,4 +61,6 @@ class EmbeddingLayers_pooling(nn.Module):
     def __init__(self):
         super(EmbeddingLayers_pooling, self).__init__()
 
-        self.conv1 =
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=64,
+                               kernel_size=(5, 5), stride=(1, 1),  dilation=1,
+                          
