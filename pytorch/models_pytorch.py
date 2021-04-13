@@ -74,4 +74,8 @@ class EmbeddingLayers_pooling(nn.Module):
                                padding=(8, 8), bias=False)
 
         self.conv4 = nn.Conv2d(in_channels=256, out_channels=512,
-                               kernel_size=(5, 5), stride=(1, 
+                               kernel_size=(5, 5), stride=(1, 1),  dilation=8,
+                               padding=(16, 16), bias=False)
+
+        self.bn1 = nn.BatchNorm2d(64)
+        self.b
