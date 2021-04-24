@@ -85,3 +85,9 @@ class EmbeddingLayers_pooling(nn.Module):
         self.init_weights()
 
     def init_weights(self):
+        init_layer(self.conv1)
+        init_layer(self.conv2)
+        init_layer(self.conv3)
+        init_layer(self.conv4)
+
+        init_bn(se
