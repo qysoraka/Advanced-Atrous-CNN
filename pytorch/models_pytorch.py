@@ -90,4 +90,10 @@ class EmbeddingLayers_pooling(nn.Module):
         init_layer(self.conv3)
         init_layer(self.conv4)
 
-        init_bn(se
+        init_bn(self.bn1)
+        init_bn(self.bn2)
+        init_bn(self.bn3)
+        init_bn(self.bn4)
+
+    def forward(self, input, return_layers=False):
+     
