@@ -78,4 +78,10 @@ class EmbeddingLayers_pooling(nn.Module):
                                padding=(16, 16), bias=False)
 
         self.bn1 = nn.BatchNorm2d(64)
-        self.b
+        self.bn2 = nn.BatchNorm2d(128)
+        self.bn3 = nn.BatchNorm2d(256)
+        self.bn4 = nn.BatchNorm2d(512)
+
+        self.init_weights()
+
+    def init_weights(self):
