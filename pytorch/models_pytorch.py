@@ -110,4 +110,9 @@ class EmbeddingLayers_pooling(nn.Module):
 
 class CnnPooling_Max(nn.Module):
     def __init__(self, classes_num):
-        super(
+        super(CnnPooling_Max, self).__init__()
+
+        self.emb = EmbeddingLayers_pooling()
+        self.fc_final = nn.Linear(512, classes_num)
+
+    
