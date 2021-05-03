@@ -101,3 +101,7 @@ class EmbeddingLayers_pooling(nn.Module):
         x = input.view(-1, 1, seq_len, mel_bins)
         """(samples_num, feature_maps, time_steps, freq_num)"""
 
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = F.relu(self.bn2(self.conv2(x)))
+        x = F.relu(self.bn3(self.conv3(x)))
+        x = 
