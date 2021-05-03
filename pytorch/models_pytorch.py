@@ -104,4 +104,10 @@ class EmbeddingLayers_pooling(nn.Module):
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
-        x = 
+        x = F.relu(self.bn4(self.conv4(x)))
+
+        return x
+
+class CnnPooling_Max(nn.Module):
+    def __init__(self, classes_num):
+        super(
