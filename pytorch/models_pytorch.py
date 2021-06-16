@@ -133,4 +133,9 @@ class CnnPooling_Max(nn.Module):
 
 class CnnPooling_Avg(nn.Module):
     def __init__(self, classes_num):
-        super(CnnPooli
+        super(CnnPooling_Avg, self).__init__()
+
+        self.emb = EmbeddingLayers_pooling()
+        self.fc_final = nn.Linear(512, classes_num)
+
+        self.init_wei
