@@ -138,4 +138,10 @@ class CnnPooling_Avg(nn.Module):
         self.emb = EmbeddingLayers_pooling()
         self.fc_final = nn.Linear(512, classes_num)
 
-        self.init_wei
+        self.init_weights()
+
+    def init_weights(self):
+        init_layer(self.fc_final)
+
+    def forward(self, input):
+        """(samples_num, feature_maps, time_steps, f
