@@ -150,4 +150,10 @@ class CnnPooling_Avg(nn.Module):
         x = F.avg_pool2d(x, kernel_size=x.shape[2:])
         x = x.view(x.shape[0:2])
 
-        out
+        output = F.log_softmax(self.fc_final(x), dim=-1)
+
+        return output
+
+class CnnPooling_Attention(nn.Module):
+    def __init__(self, classes_num):
+        super(CnnPooli
