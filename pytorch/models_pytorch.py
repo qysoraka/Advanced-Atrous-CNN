@@ -144,4 +144,10 @@ class CnnPooling_Avg(nn.Module):
         init_layer(self.fc_final)
 
     def forward(self, input):
-        """(samples_num, feature_maps, time_steps, f
+        """(samples_num, feature_maps, time_steps, freq_num)"""
+	x = self.emb(input)
+
+        x = F.avg_pool2d(x, kernel_size=x.shape[2:])
+        x = x.view(x.shape[0:2])
+
+        out
