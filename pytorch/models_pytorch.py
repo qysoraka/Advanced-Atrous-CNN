@@ -156,4 +156,9 @@ class CnnPooling_Avg(nn.Module):
 
 class CnnPooling_Attention(nn.Module):
     def __init__(self, classes_num):
-        super(CnnPooli
+        super(CnnPooling_Attention, self).__init__()
+
+        self.emb = EmbeddingLayers_pooling()
+        self.attention = Attention2d(
+            512,
+            classes_num,
