@@ -162,3 +162,10 @@ class CnnPooling_Attention(nn.Module):
         self.attention = Attention2d(
             512,
             classes_num,
+            att_activation='sigmoid',
+            cla_activation='log_softmax')
+
+    def init_weights(self):
+        pass
+
+    def forward(self, input
