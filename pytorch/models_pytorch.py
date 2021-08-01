@@ -174,4 +174,10 @@ class CnnPooling_Attention(nn.Module):
 
         output = self.attention(x)
 
-        return outpu
+        return output
+
+
+class Attention2d(nn.Module):
+    def __init__(self, n_in, n_out, att_activation, cla_activation):
+        super(Attention2d, self).__init__()
+
