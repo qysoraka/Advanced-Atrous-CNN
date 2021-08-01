@@ -181,3 +181,8 @@ class Attention2d(nn.Module):
     def __init__(self, n_in, n_out, att_activation, cla_activation):
         super(Attention2d, self).__init__()
 
+        self.att_activation = att_activation
+        self.cla_activation = cla_activation
+
+        self.att = nn.Conv2d(
+            in_channels
