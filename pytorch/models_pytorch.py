@@ -168,4 +168,10 @@ class CnnPooling_Attention(nn.Module):
     def init_weights(self):
         pass
 
-    def forward(self, input
+    def forward(self, input):
+        """(samples_num, feature_maps, time_steps, freq_num)"""
+        x = self.emb(input)
+
+        output = self.attention(x)
+
+        return outpu
