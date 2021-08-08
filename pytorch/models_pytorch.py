@@ -185,4 +185,9 @@ class Attention2d(nn.Module):
         self.cla_activation = cla_activation
 
         self.att = nn.Conv2d(
-            in_channels
+            in_channels=n_in, out_channels=n_out, kernel_size=(
+                1, 1), stride=(
+                1, 1), padding=(
+                0, 0), bias=True)
+
+        s
