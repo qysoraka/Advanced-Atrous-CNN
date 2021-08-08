@@ -194,4 +194,11 @@ class Attention2d(nn.Module):
             in_channels=n_in, out_channels=n_out, kernel_size=(
                 1, 1), stride=(
                 1, 1), padding=(
-                0, 0), bias
+                0, 0), bias=True)
+
+        self.init_weights()
+
+    def init_weights(self):
+        init_layer(self.att)
+        init_layer(self.cla)
+        self.att.weight.data
