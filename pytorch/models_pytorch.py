@@ -201,4 +201,11 @@ class Attention2d(nn.Module):
     def init_weights(self):
         init_layer(self.att)
         init_layer(self.cla)
-        self.att.weight.data
+        self.att.weight.data.fill_(0.)
+
+    def activate(self, x, activation):
+
+        if activation == 'linear':
+            return x
+
+        elif activation == 'r
