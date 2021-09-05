@@ -208,4 +208,10 @@ class Attention2d(nn.Module):
         if activation == 'linear':
             return x
 
-        elif activation == 'r
+        elif activation == 'relu':
+            return F.relu(x)
+
+        elif activation == 'sigmoid':
+            return F.sigmoid(x)+0.1
+
+        elif activation == 
