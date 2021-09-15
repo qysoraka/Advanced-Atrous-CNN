@@ -214,4 +214,8 @@ class Attention2d(nn.Module):
         elif activation == 'sigmoid':
             return F.sigmoid(x)+0.1
 
-        elif activation == 
+        elif activation == 'log_softmax':
+            return F.log_softmax(x, dim=1)
+
+    def forward(self, x):
+        """input: (samples_num, channel, time_steps, freq_bi
