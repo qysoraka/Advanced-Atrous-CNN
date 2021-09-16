@@ -218,4 +218,11 @@ class Attention2d(nn.Module):
             return F.log_softmax(x, dim=1)
 
     def forward(self, x):
-        """input: (samples_num, channel, time_steps, freq_bi
+        """input: (samples_num, channel, time_steps, freq_bins)
+        """
+
+        att = self.att(x)
+        att = self.activate(att, self.att_activation)
+
+        cla = self.cla(x)
+        cla = self
