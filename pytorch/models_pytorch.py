@@ -228,4 +228,7 @@ class Attention2d(nn.Module):
         cla = self.activate(cla, self.cla_activation)
 
         # (samples_num, channel, time_steps * freq_bins)
-        att = att.view(att.size(0), 
+        att = att.view(att.size(0), att.size(1), att.size(2) * att.size(3))
+        cla = cla.view(cla.size(0), cla.size(1), cla.size(2) * cla.size(3))
+
+    
