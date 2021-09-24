@@ -231,4 +231,7 @@ class Attention2d(nn.Module):
         att = att.view(att.size(0), att.size(1), att.size(2) * att.size(3))
         cla = cla.view(cla.size(0), cla.size(1), cla.size(2) * cla.size(3))
 
-    
+        epsilon = 0.1 # 1e-7
+        att = torch.clamp(att, epsilon, 1. - epsilon)
+
+        norm_att = att / torch.sum(att, dim=2)[:, :, None
