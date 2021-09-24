@@ -234,4 +234,10 @@ class Attention2d(nn.Module):
         epsilon = 0.1 # 1e-7
         att = torch.clamp(att, epsilon, 1. - epsilon)
 
-        norm_att = att / torch.sum(att, dim=2)[:, :, None
+        norm_att = att / torch.sum(att, dim=2)[:, :, None]
+        x = torch.sum(norm_att * cla, dim=2)
+
+        Return_heatmap = False
+        if Return_heatmap:
+            return x, norm_att
+     
