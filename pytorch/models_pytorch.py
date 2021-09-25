@@ -240,4 +240,12 @@ class Attention2d(nn.Module):
         Return_heatmap = False
         if Return_heatmap:
             return x, norm_att
-     
+        else:
+            return x
+
+
+class EmbeddingLayers(nn.Module):
+    def __init__(self):
+        super(EmbeddingLayers, self).__init__()
+
+        self.conv1 = nn.Conv2
