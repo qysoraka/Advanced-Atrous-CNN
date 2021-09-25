@@ -248,4 +248,6 @@ class EmbeddingLayers(nn.Module):
     def __init__(self):
         super(EmbeddingLayers, self).__init__()
 
-        self.conv1 = nn.Conv2
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=64,
+                               kernel_size=(5, 5), stride=(1, 1),
+                               padding=(2, 2),
