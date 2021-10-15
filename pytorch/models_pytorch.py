@@ -257,4 +257,7 @@ class EmbeddingLayers(nn.Module):
                                padding=(2, 2), bias=False)
 
         self.conv3 = nn.Conv2d(in_channels=128, out_channels=256,
-  
+                               kernel_size=(5, 5), stride=(1, 1),
+                               padding=(2, 2), bias=False)
+
+        self.conv4 = nn.Co
