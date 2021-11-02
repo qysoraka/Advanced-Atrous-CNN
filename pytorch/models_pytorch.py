@@ -267,4 +267,10 @@ class EmbeddingLayers(nn.Module):
         self.bn1 = nn.BatchNorm2d(64)
         self.bn2 = nn.BatchNorm2d(128)
         self.bn3 = nn.BatchNorm2d(256)
-       
+        self.bn4 = nn.BatchNorm2d(512)
+
+        self.init_weights()
+
+    def init_weights(self):
+        init_layer(self.conv1)
+        init_layer(self.con
