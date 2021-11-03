@@ -279,4 +279,8 @@ class EmbeddingLayers(nn.Module):
 
         init_bn(self.bn1)
         init_bn(self.bn2)
-   
+        init_bn(self.bn3)
+        init_bn(self.bn4)
+
+    def forward(self, input, return_layers=False):
+        (_, seq_len, mel_bi
