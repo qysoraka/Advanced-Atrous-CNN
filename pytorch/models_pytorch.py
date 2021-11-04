@@ -283,4 +283,9 @@ class EmbeddingLayers(nn.Module):
         init_bn(self.bn4)
 
     def forward(self, input, return_layers=False):
-        (_, seq_len, mel_bi
+        (_, seq_len, mel_bins) = input.shape
+
+        x = input.view(-1, 1, seq_len, mel_bins)
+        """(samples_num, feature_maps, time_steps, freq_num)"""
+
+        a1 = 
