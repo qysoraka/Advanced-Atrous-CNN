@@ -288,4 +288,7 @@ class EmbeddingLayers(nn.Module):
         x = input.view(-1, 1, seq_len, mel_bins)
         """(samples_num, feature_maps, time_steps, freq_num)"""
 
-        a1 = 
+        a1 = F.relu(self.bn1(self.conv1(x)))
+        a1 = F.max_pool2d(a1, kernel_size=(2, 2))
+        a2 = F.relu(self.bn2(self.conv2(a1)))
+        a2 = F.max_pool2d(a2, kernel_size=(2, 2
