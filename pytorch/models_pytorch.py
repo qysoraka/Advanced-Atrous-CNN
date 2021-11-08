@@ -291,4 +291,8 @@ class EmbeddingLayers(nn.Module):
         a1 = F.relu(self.bn1(self.conv1(x)))
         a1 = F.max_pool2d(a1, kernel_size=(2, 2))
         a2 = F.relu(self.bn2(self.conv2(a1)))
-        a2 = F.max_pool2d(a2, kernel_size=(2, 2
+        a2 = F.max_pool2d(a2, kernel_size=(2, 2))
+        a3 = F.relu(self.bn3(self.conv3(a2)))
+        a3 = F.max_pool2d(a3, kernel_size=(2, 2))
+        emb = F.relu(self.bn4(self.conv4(a3)))
+        emb
