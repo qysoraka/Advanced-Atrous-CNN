@@ -295,4 +295,9 @@ class EmbeddingLayers(nn.Module):
         a3 = F.relu(self.bn3(self.conv3(a2)))
         a3 = F.max_pool2d(a3, kernel_size=(2, 2))
         emb = F.relu(self.bn4(self.conv4(a3)))
-        emb
+        emb = F.max_pool2d(emb, kernel_size=(2, 2))
+
+        if return_layers is False:
+            return emb
+        else:
+            return [a1, a2, a3
