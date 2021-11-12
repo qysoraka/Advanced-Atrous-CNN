@@ -300,4 +300,11 @@ class EmbeddingLayers(nn.Module):
         if return_layers is False:
             return emb
         else:
-            return [a1, a2, a3
+            return [a1, a2, a3, emb]
+
+class DecisionLevelMaxPooling(nn.Module):
+    def __init__(self, classes_num):
+
+        super(DecisionLevelMaxPooling, self).__init__()
+
+      
