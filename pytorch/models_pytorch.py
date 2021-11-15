@@ -312,4 +312,10 @@ class DecisionLevelMaxPooling(nn.Module):
 
         self.init_weights()
 
-    def init_
+    def init_weights(self):
+
+        init_layer(self.fc_final)
+
+    def forward(self, input):
+        """input: (samples_num, channel, time_steps, freq_bins)
+      
