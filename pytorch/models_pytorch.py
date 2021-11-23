@@ -327,4 +327,10 @@ class DecisionLevelMaxPooling(nn.Module):
         output = F.max_pool2d(x, kernel_size=x.shape[2:])
         output = output.view(output.shape[0:2])
 
-        output = F.log_softmax(self.fc_final(outpu
+        output = F.log_softmax(self.fc_final(output), dim=-1)
+
+        return output
+
+class DecisionLevelAvgPooling(nn.Module):
+    def __init__(self, classes_num):
+        super(DecisionLevelAvgPooling, self)._
