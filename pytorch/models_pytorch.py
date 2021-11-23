@@ -324,3 +324,7 @@ class DecisionLevelMaxPooling(nn.Module):
         x = self.emb(input)
 
         # (samples_num, 512, hidden_units)
+        output = F.max_pool2d(x, kernel_size=x.shape[2:])
+        output = output.view(output.shape[0:2])
+
+        output = F.log_softmax(self.fc_final(outpu
