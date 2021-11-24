@@ -333,4 +333,11 @@ class DecisionLevelMaxPooling(nn.Module):
 
 class DecisionLevelAvgPooling(nn.Module):
     def __init__(self, classes_num):
-        super(DecisionLevelAvgPooling, self)._
+        super(DecisionLevelAvgPooling, self).__init__()
+
+        self.emb = EmbeddingLayers()
+        self.fc_final = nn.Linear(512, classes_num)
+
+        self.init_weights()
+
+    def init_weights(
