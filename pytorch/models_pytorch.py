@@ -347,4 +347,8 @@ class DecisionLevelAvgPooling(nn.Module):
         """input: (samples_num, channel, time_steps, freq_bins)
         """
 
-      
+        # (samples_num, channel, time_steps, freq_bins)
+        x = self.emb(input)
+
+        # (samples_num, 512, hidden_units)
+        x = F.avg_pool2d(x, ke
