@@ -351,4 +351,9 @@ class DecisionLevelAvgPooling(nn.Module):
         x = self.emb(input)
 
         # (samples_num, 512, hidden_units)
-        x = F.avg_pool2d(x, ke
+        x = F.avg_pool2d(x, kernel_size=x.shape[2:])
+        x = x.view(x.shape[0:2])
+
+        output = F.log_softmax(self.fc_final(x), dim=-1)
+
+     
