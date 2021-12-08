@@ -356,4 +356,8 @@ class DecisionLevelAvgPooling(nn.Module):
 
         output = F.log_softmax(self.fc_final(x), dim=-1)
 
-     
+        return output
+
+class DecisionLevelFlatten(nn.Module):
+    def __init__(self, classes_num):
+        super(DecisionLevelFlatten, self).__init__(
