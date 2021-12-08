@@ -360,4 +360,11 @@ class DecisionLevelAvgPooling(nn.Module):
 
 class DecisionLevelFlatten(nn.Module):
     def __init__(self, classes_num):
-        super(DecisionLevelFlatten, self).__init__(
+        super(DecisionLevelFlatten, self).__init__()
+
+        self.emb = EmbeddingLayers()
+        self.fc_final = nn.Linear(40960, classes_num)
+
+        self.init_weights()
+
+    def init_weights(self):
