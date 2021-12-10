@@ -378,4 +378,12 @@ class DecisionLevelFlatten(nn.Module):
         x = self.emb(input)
 
         # (samples_num, 512, hidden_units)
-        x = x.view(x.size(0), x.size(1) * x.size(
+        x = x.view(x.size(0), x.size(1) * x.size(2) * x.size(3))
+
+        output = F.log_softmax(self.fc_final(x), dim=-1)
+
+        return output
+
+class DecisionLevelSingleAttention(nn.Module):
+
+    def _
