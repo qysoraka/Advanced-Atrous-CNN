@@ -374,4 +374,8 @@ class DecisionLevelFlatten(nn.Module):
         """input: (samples_num, channel, time_steps, freq_bins)
         """
 
-        # (samples_n
+        # (samples_num, channel, time_steps, freq_bins)
+        x = self.emb(input)
+
+        # (samples_num, 512, hidden_units)
+        x = x.view(x.size(0), x.size(1) * x.size(
