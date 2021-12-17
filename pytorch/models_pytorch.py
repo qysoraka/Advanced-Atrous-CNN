@@ -386,4 +386,9 @@ class DecisionLevelFlatten(nn.Module):
 
 class DecisionLevelSingleAttention(nn.Module):
 
-    def _
+    def __init__(self, classes_num):
+
+        super(DecisionLevelSingleAttention, self).__init__()
+
+        self.emb = EmbeddingLayers()
+        self.attention = 
