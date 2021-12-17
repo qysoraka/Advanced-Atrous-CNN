@@ -391,4 +391,8 @@ class DecisionLevelSingleAttention(nn.Module):
         super(DecisionLevelSingleAttention, self).__init__()
 
         self.emb = EmbeddingLayers()
-        self.attention = 
+        self.attention = Attention2d(
+            512,
+            classes_num,
+            att_activation='sigmoid',
+            cla_activation='log_softmax')
