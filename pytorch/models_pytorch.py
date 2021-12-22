@@ -396,3 +396,9 @@ class DecisionLevelSingleAttention(nn.Module):
             classes_num,
             att_activation='sigmoid',
             cla_activation='log_softmax')
+
+    def init_weights(self):
+        pass
+
+    def forward(self, input):
+        """input: (samples_num, freq_bins, time_steps, 
