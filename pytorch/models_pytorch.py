@@ -408,4 +408,6 @@ class DecisionLevelSingleAttention(nn.Module):
         b1 = self.emb(input)
 
         # (samples_num, classes_num, time_steps, 1)
-        output
+        output = self.attention(b1)
+
+        return output
