@@ -10,4 +10,11 @@ DEV_SUBTASK_B_DIR="development-subtaskB-mobile"
 LB_SUBTASK_A_DIR="leaderboard-subtaskA"
 LB_SUBTASK_B_DIR="leaderboard-subtaskB-mobile"
 EVAL_SUBTASK_A_DIR="evaluation-subtaskA"
-EVAL_SUBT
+EVAL_SUBTASK_B_DIR="evaluation-subtaskB-mobile"
+
+BACKEND="pytorch"
+HOLDOUT_FOLD=1
+GPU_ID=0
+
+############ Extract features ############
+#pyth
