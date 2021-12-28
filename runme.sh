@@ -17,4 +17,5 @@ HOLDOUT_FOLD=1
 GPU_ID=0
 
 ############ Extract features ############
-#pyth
+#python utils/features.py logmel --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_A_DIR --data_type=development --workspace=$WORKSPACE
+#python utils/features.py logmel --
