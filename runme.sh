@@ -33,4 +33,7 @@ python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_S
 
 ############ Development subtask B ############
 # Train model for subtask B
-#python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_B_DIR --workspace=$WORKSPACE --validate --hold
+#python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_B_DIR --workspace=$WORKSPACE --validate --holdout_fold=$HOLDOUT_FOLD --cuda
+
+# Evaluate subtask B
+#python $BACKEND/main_pytorch.py inference_validation_data --dataset_dir=$DATASET_DIR -
