@@ -40,3 +40,5 @@ python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_S
 
 
 ############ Full train subtask A ############
+# Train on full development data
+#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_A_DIR
