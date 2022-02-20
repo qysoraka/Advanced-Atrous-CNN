@@ -47,4 +47,7 @@ python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_S
 #CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_leaderboard_data --dataset_dir=$DATASET_DIR --dev_subdir=$DEV_SUBTASK_A_DIR --leaderboard_subdir=$LB_SUBTASK_A_DIR --workspace=$WORKSPACE --iteration=3000 --cuda
 
 # Inference evaluation data
-#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_evaluation_data --dataset_dir=$DATASET_DIR --dev_subdir=$DE
+#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_evaluation_data --dataset_dir=$DATASET_DIR --dev_subdir=$DEV_SUBTASK_A_DIR --eval_subdir=$EVAL_SUBTASK_A_DIR --workspace=$WORKSPACE --iteration=3000 --cuda
+
+############ Full train subtask B ############
+# T
