@@ -51,4 +51,7 @@ python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_S
 
 ############ Full train subtask B ############
 # Trian on full development data
-#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV
+#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_B_DIR --workspace=$WORKSPACE --cuda
+
+# Inference leaderboard data
+#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_le
