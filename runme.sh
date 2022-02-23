@@ -54,4 +54,4 @@ python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_S
 #CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py train --dataset_dir=$DATASET_DIR --subdir=$DEV_SUBTASK_B_DIR --workspace=$WORKSPACE --cuda
 
 # Inference leaderboard data
-#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_le
+#CUDA_VISIBLE_DEVICES=$GPU_ID python $BACKEND/main_pytorch.py inference_leaderboard_data --dataset_dir=$DATASET_DIR --dev_subdir=$DEV_SUBTASK_B_DIR --leaderboard_subdir=$LB_SUBTASK_B_DIR --workspace=$WORKSPACE --
