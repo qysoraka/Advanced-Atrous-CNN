@@ -161,3 +161,109 @@ class DataGenerator(object):
 
         for n in range(len(audio_indexes)):
             if self.source_labels[audio_indexes[n]] in devices:
+                devices_specific_indexes.append(audio_indexes[n])
+
+        logging.info('Number of {} audios in specific devices {}: {}'.format(
+            data_type, devices, len(devices_specific_indexes)))
+
+        audios_num = len(devices_specific_indexes)
+
+        iteration = 0
+        pointer = 0
+
+        while True:
+
+            if iteration == max_iteration:
+                break
+
+            # Reset pointer
+            if pointer >= audios_num:
+                break
+
+            # Get batch indexes
+            batch_audio_indexes = devices_specific_indexes[
+                pointer: pointer + batch_size]
+                
+            pointer += batch_size
+
+            iteration += 1
+
+            batch_x = self.x[batch_audio_indexes]
+            batch_y = self.y[batch_audio_indexes]
+            batch_audio_names = self.audio_names[batch_audio_indexes]
+
+            # Transform data
+            batch_x = self.transform(batch_x)
+
+            yield batch_x, batch_y, batch_audio_names
+
+    def transform(self, x):
+        """Transform data. 
+        
+        Args:
+          x: (batch_x, seq_len, freq_bins) | (seq_len, freq_bins)
+          
+        Returns:
+          Transformed data. 
+        """
+
+        return scale(x, self.mean, self.std)
+        
+    
+class TestDataGenerator(DataGenerator):
+    
+    def __init__(self, dev_hdf5_path, test_hdf5_path, batch_size):
+        """Data generator for test data. 
+        
+        Inputs:
+          dev_hdf5_path: str
+          test_hdf5_path: str
+          batch_size: int
+        """
+        
+        super(TestDataGenerator, self).__init__(
+            hdf5_path=dev_hdf5_path, 
+            batch_size=batch_size, 
+            dev_train_csv=None,
+            dev_validate_csv=None)
+            
+        # Load test data
+        load_time = time.time()
+        hf = h5py.File(test_hdf5_path, 'r')
+
+        self.test_audio_names = np.array(
+            [s.decode() for s in hf['filename'][:]])
+            
+        self.test_x = hf['feature'][:]
+        
+        hf.close()
+        
+        logging.info('Loading data time: {:.3f} s'.format(
+            time.time() - load_time))
+        
+    def generate_test(self):
+        
+        audios_num = len(self.test_x)
+        audio_indexes = np.arange(audios_num)
+        batch_size = self.batch_size
+        
+        pointer = 0
+        
+        while True:
+
+            # Reset pointer
+            if pointer >= audios_num:
+                break
+
+            # Get batch indexes
+            batch_audio_indexes = audio_indexes[pointer: pointer + batch_size]
+                
+            pointer += batch_size
+
+            batch_x = self.test_x[batch_audio_indexes]
+            batch_audio_names = self.test_audio_names[batch_audio_indexes]
+
+            # Transform data
+            batch_x = self.transform(batch_x)
+
+            yield batch_x, batch_audio_names
