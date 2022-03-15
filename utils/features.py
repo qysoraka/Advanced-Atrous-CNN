@@ -7,4 +7,14 @@ import argparse
 import h5py
 import librosa
 from scipy import signal
-import matpl
+import matplotlib.pyplot as plt
+import time
+import csv
+import random
+
+from utilities import read_audio, create_folder
+import config
+
+
+class LogMelExtractor():
+    d
