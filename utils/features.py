@@ -17,4 +17,8 @@ import config
 
 
 class LogMelExtractor():
-    d
+    def __init__(self, sample_rate, window_size, overlap, mel_bins):
+        
+        self.window_size = window_size
+        self.overlap = overlap
+      
