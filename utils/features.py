@@ -24,4 +24,7 @@ class LogMelExtractor():
         self.ham_win = np.hamming(window_size)
         
         self.melW = librosa.filters.mel(sr=sample_rate, 
-                                        n_fft=window_si
+                                        n_fft=window_size, 
+                                        n_mels=mel_bins, 
+                                        fmin=20., 
+                                        fmax=sample_rate
