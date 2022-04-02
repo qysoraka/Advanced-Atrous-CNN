@@ -33,4 +33,9 @@ class LogMelExtractor():
     
         ham_win = self.ham_win
         window_size = self.window_size
-        overlap = self
+        overlap = self.overlap
+    
+        [f, t, x] = signal.spectral.spectrogram(
+                        audio, 
+                        window=ham_win,
+                  
