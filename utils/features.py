@@ -38,4 +38,7 @@ class LogMelExtractor():
         [f, t, x] = signal.spectral.spectrogram(
                         audio, 
                         window=ham_win,
-                  
+                        nperseg=window_size, 
+                        noverlap=overlap, 
+                        detrend=False, 
+                        retu
