@@ -41,4 +41,9 @@ class LogMelExtractor():
                         nperseg=window_size, 
                         noverlap=overlap, 
                         detrend=False, 
-                        retu
+                        return_onesided=True, 
+                        mode='magnitude') 
+        x = x.T
+            
+        x = np.dot(x, self.melW)
+        x = np
