@@ -46,4 +46,11 @@ class LogMelExtractor():
         x = x.T
             
         x = np.dot(x, self.melW)
-        x = np
+        x = np.log(x + 1e-8)
+        x = x.astype(np.float32)
+        
+        return x
+
+
+def calculate_logmel(audio_path, sample_rate, feature_extractor):
+   
