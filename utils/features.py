@@ -53,4 +53,8 @@ class LogMelExtractor():
 
 
 def calculate_logmel(audio_path, sample_rate, feature_extractor):
-   
+    
+    # Read audio
+    (audio, fs) = read_audio(audio_path, target_fs=sample_rate)
+    
+    '''We do not divide the maximum value of an audio here beca
