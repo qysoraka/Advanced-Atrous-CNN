@@ -57,4 +57,8 @@ def calculate_logmel(audio_path, sample_rate, feature_extractor):
     # Read audio
     (audio, fs) = read_audio(audio_path, target_fs=sample_rate)
     
-    '''We do not divide the maximum value of an audio here beca
+    '''We do not divide the maximum value of an audio here because we assume 
+    the low energy of an audio may also contain information of a scene. '''
+    
+    # Extract feature
+    feature = feat
