@@ -61,4 +61,12 @@ def calculate_logmel(audio_path, sample_rate, feature_extractor):
     the low energy of an audio may also contain information of a scene. '''
     
     # Extract feature
-    feature = feat
+    feature = feature_extractor.transform(audio)
+    
+    return feature
+
+
+def read_development_meta(meta_csv):
+    
+    df = pd.read_csv(meta_csv, sep='\t')
+    df = 
