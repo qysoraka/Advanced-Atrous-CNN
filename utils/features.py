@@ -78,4 +78,6 @@ def read_development_meta(meta_csv):
     
     for row in df.iterrows():
         
-       
+        audio_name = row[1]['filename'].split('/')[1]
+        scene_label = row[1]['scene_label']
+        identifier = row[1]['identifier
