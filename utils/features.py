@@ -69,4 +69,13 @@ def calculate_logmel(audio_path, sample_rate, feature_extractor):
 def read_development_meta(meta_csv):
     
     df = pd.read_csv(meta_csv, sep='\t')
-    df = 
+    df = pd.DataFrame(df)
+    
+    audio_names = []
+    scene_labels = []
+    identifiers = []
+    source_labels = []
+    
+    for row in df.iterrows():
+        
+       
