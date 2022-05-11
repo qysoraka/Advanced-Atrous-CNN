@@ -80,4 +80,9 @@ def read_development_meta(meta_csv):
         
         audio_name = row[1]['filename'].split('/')[1]
         scene_label = row[1]['scene_label']
-        identifier = row[1]['identifier
+        identifier = row[1]['identifier']
+        source_label = row[1]['source_label']
+        
+        audio_names.append(audio_name)
+        scene_labels.append(scene_label)
+        ident
