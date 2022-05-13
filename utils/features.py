@@ -85,4 +85,10 @@ def read_development_meta(meta_csv):
         
         audio_names.append(audio_name)
         scene_labels.append(scene_label)
-        ident
+        identifiers.append(identifier)
+        source_labels.append(source_label)
+        
+    return audio_names, scene_labels, identifiers, source_labels
+    
+    
+def read_eval
