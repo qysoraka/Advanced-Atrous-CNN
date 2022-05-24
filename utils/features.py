@@ -97,4 +97,11 @@ def read_evaluation_meta(evaluation_csv):
         reader = csv.reader(f)
         lis = list(reader)
         
-    audio
+    audio_names = []
+        
+    for li in lis:
+        audio_name = li[0].split('/')[1]
+        audio_names.append(audio_name)
+        
+    return audio_names
+ 
