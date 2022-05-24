@@ -91,4 +91,10 @@ def read_development_meta(meta_csv):
     return audio_names, scene_labels, identifiers, source_labels
     
     
-def read_eval
+def read_evaluation_meta(evaluation_csv):
+    
+    with open(evaluation_csv, 'r') as f:
+        reader = csv.reader(f)
+        lis = list(reader)
+        
+    audio
