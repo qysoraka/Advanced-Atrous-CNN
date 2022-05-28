@@ -111,4 +111,9 @@ def calculate_features(args):
     # Arguments & parameters
     dataset_dir = args.dataset_dir
     subdir = args.subdir
-    data_type = args.
+    data_type = args.data_type
+    workspace = args.workspace
+    mini_data = args.mini_data
+
+    sample_rate = config.sample_rate
+    window_size = config.window_s
