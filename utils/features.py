@@ -104,4 +104,11 @@ def read_evaluation_meta(evaluation_csv):
         audio_names.append(audio_name)
         
     return audio_names
- 
+    
+
+def calculate_features(args):
+    
+    # Arguments & parameters
+    dataset_dir = args.dataset_dir
+    subdir = args.subdir
+    data_type = args.
