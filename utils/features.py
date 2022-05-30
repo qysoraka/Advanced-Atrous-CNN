@@ -122,4 +122,9 @@ def calculate_features(args):
     mel_bins = config.mel_bins
     
     # Paths
-    audio_dir = os.path.join(d
+    audio_dir = os.path.join(dataset_dir, subdir, 'audio')
+    
+    if data_type == 'development':
+        meta_csv = os.path.join(dataset_dir, subdir, 'meta.csv')
+        
+    elif data_type in ['leaderboard
