@@ -116,4 +116,10 @@ def calculate_features(args):
     mini_data = args.mini_data
 
     sample_rate = config.sample_rate
-    window_size = config.window_s
+    window_size = config.window_size
+    overlap = config.overlap
+    seq_len = config.seq_len
+    mel_bins = config.mel_bins
+    
+    # Paths
+    audio_dir = os.path.join(d
