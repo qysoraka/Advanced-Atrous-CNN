@@ -129,4 +129,8 @@ def calculate_features(args):
         
     elif data_type in ['leaderboard', 'evaluation']:
         evaluation_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup', 
-                                      'test.t
+                                      'test.txt')
+    
+    if mini_data:
+        hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir, 
+                                 'mini_
