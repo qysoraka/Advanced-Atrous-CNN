@@ -127,4 +127,6 @@ def calculate_features(args):
     if data_type == 'development':
         meta_csv = os.path.join(dataset_dir, subdir, 'meta.csv')
         
-    elif data_type in ['leaderboard
+    elif data_type in ['leaderboard', 'evaluation']:
+        evaluation_csv = os.path.join(dataset_dir, subdir, 'evaluation_setup', 
+                                      'test.t
