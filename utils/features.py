@@ -137,4 +137,10 @@ def calculate_features(args):
     else:
         hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir, 
                                  '{}.h5'.format(data_type))
-   
+        
+        
+    create_folder(os.path.dirname(hdf5_path))
+    
+    # Feature extractor
+    feature_extractor = LogMelExtractor(sample_rate=sample_rate, 
+      
