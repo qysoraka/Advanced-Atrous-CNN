@@ -133,4 +133,8 @@ def calculate_features(args):
     
     if mini_data:
         hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir, 
-                                 'mini_
+                                 'mini_{}.h5'.format(data_type))
+    else:
+        hdf5_path = os.path.join(workspace, 'features', 'logmel', subdir, 
+                                 '{}.h5'.format(data_type))
+   
