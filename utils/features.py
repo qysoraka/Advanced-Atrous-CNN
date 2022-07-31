@@ -145,4 +145,8 @@ def calculate_features(args):
     feature_extractor = LogMelExtractor(sample_rate=sample_rate, 
                                         window_size=window_size, 
                                         overlap=overlap, 
-                   
+                                        mel_bins=mel_bins)
+
+    # Read meta csv
+    if data_type == 'development':
+        [audio_names, scene_labels, identifiers, source_lab
