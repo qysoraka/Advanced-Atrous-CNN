@@ -153,4 +153,10 @@ def calculate_features(args):
             read_development_meta(meta_csv)
         
     elif data_type in ['leaderboard', 'evaluation']:
-        audio_names = re
+        audio_names = read_evaluation_meta(evaluation_csv)
+
+    # Only use partial data when set mini_data to True
+    if mini_data:
+        
+        audios_num = 300
+  
