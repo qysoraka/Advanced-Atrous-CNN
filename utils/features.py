@@ -149,4 +149,8 @@ def calculate_features(args):
 
     # Read meta csv
     if data_type == 'development':
-        [audio_names, scene_labels, identifiers, source_lab
+        [audio_names, scene_labels, identifiers, source_labels] = \
+            read_development_meta(meta_csv)
+        
+    elif data_type in ['leaderboard', 'evaluation']:
+        audio_names = re
