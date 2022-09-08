@@ -162,4 +162,8 @@ def calculate_features(args):
         random_state = np.random.RandomState(0)
         audio_indexes = np.arange(len(audio_names))
         random_state.shuffle(audio_indexes)
-        au
+        audio_indexes = audio_indexes[0 : audios_num]
+        
+        audio_names = [audio_names[idx] for idx in audio_indexes]
+        
+        if data_ty
