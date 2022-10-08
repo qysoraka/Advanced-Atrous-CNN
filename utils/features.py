@@ -173,4 +173,10 @@ def calculate_features(args):
         
     print('Number of audios: {}'.format(len(audio_names)))
     
+    # Create hdf5 file
+    hf = h5py.File(hdf5_path, 'w')
     
+    hf.create_dataset(
+        name='feature', 
+        shape=(0, seq_len, mel_bins), 
+  
