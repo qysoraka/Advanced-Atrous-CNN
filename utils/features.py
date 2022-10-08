@@ -179,4 +179,9 @@ def calculate_features(args):
     hf.create_dataset(
         name='feature', 
         shape=(0, seq_len, mel_bins), 
-  
+        maxshape=(None, seq_len, mel_bins), 
+        dtype=np.float32)
+    
+    calculate_time = time.time()
+    
+    for (n, audio_name) in enumerate(a
