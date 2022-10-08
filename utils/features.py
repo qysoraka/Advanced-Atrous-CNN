@@ -166,4 +166,7 @@ def calculate_features(args):
         
         audio_names = [audio_names[idx] for idx in audio_indexes]
         
-        if data_ty
+        if data_type == 'development':
+            scene_labels = [scene_labels[idx] for idx in audio_indexes]
+            identifiers = [identifiers[idx] for idx in audio_indexes]
+    
