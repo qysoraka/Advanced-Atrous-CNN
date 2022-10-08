@@ -169,4 +169,8 @@ def calculate_features(args):
         if data_type == 'development':
             scene_labels = [scene_labels[idx] for idx in audio_indexes]
             identifiers = [identifiers[idx] for idx in audio_indexes]
+            source_labels = [source_labels[idx] for idx in audio_indexes]
+        
+    print('Number of audios: {}'.format(len(audio_names)))
+    
     
