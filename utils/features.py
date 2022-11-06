@@ -184,4 +184,11 @@ def calculate_features(args):
     
     calculate_time = time.time()
     
-    for (n, audio_name) in enumerate(a
+    for (n, audio_name) in enumerate(audio_names):
+        
+        print(n, audio_name)
+        
+        # Calculate feature
+        audio_path = os.path.join(audio_dir, audio_name)
+        
+     
