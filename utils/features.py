@@ -191,4 +191,7 @@ def calculate_features(args):
         # Calculate feature
         audio_path = os.path.join(audio_dir, audio_name)
         
-     
+        # Extract feature
+        feature = calculate_logmel(audio_path=audio_path, 
+                                    sample_rate=sample_rate, 
+               
