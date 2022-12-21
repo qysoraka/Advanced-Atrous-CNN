@@ -194,4 +194,9 @@ def calculate_features(args):
         # Extract feature
         feature = calculate_logmel(audio_path=audio_path, 
                                     sample_rate=sample_rate, 
-               
+                                    feature_extractor=feature_extractor)
+        '''(seq_len, mel_bins)'''
+        
+        print(feature.shape)
+        
+  
