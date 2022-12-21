@@ -202,4 +202,10 @@ def calculate_features(args):
         hf['feature'].resize((n + 1, seq_len, mel_bins))
         hf['feature'][n] = feature
         
-        # Plot log Mel for debu
+        # Plot log Mel for debug
+        if False:
+            plt.matshow(feature.T, origin='lower', aspect='auto', cmap='jet')
+            plt.show()
+        
+    # Write meta info to hdf5
+    hf.
