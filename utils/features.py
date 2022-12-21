@@ -199,4 +199,7 @@ def calculate_features(args):
         
         print(feature.shape)
         
-  
+        hf['feature'].resize((n + 1, seq_len, mel_bins))
+        hf['feature'][n] = feature
+        
+        # Plot log Mel for debu
