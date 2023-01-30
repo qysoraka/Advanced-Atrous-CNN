@@ -219,4 +219,7 @@ def calculate_features(args):
                           dtype='S20')
                           
         hf.create_dataset(name='identifier', 
-                          d
+                          data=[s.encode() for s in identifiers], 
+                          dtype='S20')
+                          
+        hf.create_dataset(name='source_
