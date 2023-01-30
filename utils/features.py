@@ -212,4 +212,8 @@ def calculate_features(args):
                       data=[s.encode() for s in audio_names], 
                       dtype='S50')
     
-    if 
+    if data_type == 'development':
+        
+        hf.create_dataset(name='scene_label', 
+                          data=[s.encode() for s in scene_labels], 
+ 
