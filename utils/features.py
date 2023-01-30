@@ -216,4 +216,7 @@ def calculate_features(args):
         
         hf.create_dataset(name='scene_label', 
                           data=[s.encode() for s in scene_labels], 
- 
+                          dtype='S20')
+                          
+        hf.create_dataset(name='identifier', 
+                          d
