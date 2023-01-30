@@ -234,4 +234,7 @@ def calculate_features(args):
 
 if __name__ == '__main__':
     '''
-    # this p
+    # this part is for debugging
+    DATASET_DIR = "/home/zhao/Documents/dcase2018"
+    WORKSPACE = "/home/zhao/Documents/dcase2018/pub_dcase2018_crnn"
+    DEV_SUBTASK_A_DIR 
