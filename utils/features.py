@@ -228,4 +228,10 @@ def calculate_features(args):
 
     hf.close()
     
-    print('Write out hdf5
+    print('Write out hdf5 file to {}'.format(hdf5_path))
+    print('Time spent: {} s'.format(time.time() - calculate_time))
+
+
+if __name__ == '__main__':
+    '''
+    # this p
