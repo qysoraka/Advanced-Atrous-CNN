@@ -222,4 +222,10 @@ def calculate_features(args):
                           data=[s.encode() for s in identifiers], 
                           dtype='S20')
                           
-        hf.create_dataset(name='source_
+        hf.create_dataset(name='source_label', 
+                          data=[s.encode() for s in source_labels], 
+                          dtype='S20')
+
+    hf.close()
+    
+    print('Write out hdf5
