@@ -240,4 +240,7 @@ if __name__ == '__main__':
     DEV_SUBTASK_A_DIR = "development-subtaskA"
     parser = argparse.ArgumentParser(description='Example of parser. ')
 
-    parser.add_argument('--mode', type=str, defaul
+    parser.add_argument('--mode', type=str, default='logmel')
+    parser.add_argument('--dataset_dir', type=str, default=DATASET_DIR)
+    parser.add_argument('--subdir', type=str, default=DEV_SUBTASK_A_DIR)
+  
