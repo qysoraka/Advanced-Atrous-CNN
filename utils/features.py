@@ -208,4 +208,8 @@ def calculate_features(args):
             plt.show()
         
     # Write meta info to hdf5
-    hf.
+    hf.create_dataset(name='filename', 
+                      data=[s.encode() for s in audio_names], 
+                      dtype='S50')
+    
+    if 
