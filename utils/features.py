@@ -237,4 +237,7 @@ if __name__ == '__main__':
     # this part is for debugging
     DATASET_DIR = "/home/zhao/Documents/dcase2018"
     WORKSPACE = "/home/zhao/Documents/dcase2018/pub_dcase2018_crnn"
-    DEV_SUBTASK_A_DIR 
+    DEV_SUBTASK_A_DIR = "development-subtaskA"
+    parser = argparse.ArgumentParser(description='Example of parser. ')
+
+    parser.add_argument('--mode', type=str, defaul
