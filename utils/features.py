@@ -243,4 +243,6 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='logmel')
     parser.add_argument('--dataset_dir', type=str, default=DATASET_DIR)
     parser.add_argument('--subdir', type=str, default=DEV_SUBTASK_A_DIR)
+    parser.add_argument('--workspace', type=str, default=WORKSPACE)
+    parser.add_argument('--data_type', type=str, default='development')
   
