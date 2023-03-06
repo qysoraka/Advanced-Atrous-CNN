@@ -245,4 +245,9 @@ if __name__ == '__main__':
     parser.add_argument('--subdir', type=str, default=DEV_SUBTASK_A_DIR)
     parser.add_argument('--workspace', type=str, default=WORKSPACE)
     parser.add_argument('--data_type', type=str, default='development')
-  
+    parser.add_argument('--mini_data', action='store_true', default=False)
+
+    args = parser.parse_args()
+
+    if args.mode == 'logmel':
+        ca
