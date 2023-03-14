@@ -255,4 +255,8 @@ if __name__ == '__main__':
         raise Exception('Incorrect arguments!')
 
 '''
-    parser = argparse.ArgumentParser(descriptio
+    parser = argparse.ArgumentParser(description='')
+    subparsers = parser.add_subparsers(dest='mode')
+
+    parser_logmel = subparsers.add_parser('logmel')
+    parser_logmel.add_argument('--dataset_dir',
