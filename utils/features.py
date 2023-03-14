@@ -250,4 +250,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.mode == 'logmel':
-        ca
+        calculate_features(args)
+    else:
+        raise Exception('Incorrect arguments!')
+
+'''
+    parser = argparse.ArgumentParser(descriptio
