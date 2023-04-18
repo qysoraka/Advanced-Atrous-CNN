@@ -261,4 +261,6 @@ if __name__ == '__main__':
     parser_logmel = subparsers.add_parser('logmel')
     parser_logmel.add_argument('--dataset_dir', type=str, required=True)
     parser_logmel.add_argument('--subdir', type=str, required=True)
-    parser_logmel.add_argument('--data_type', type=s
+    parser_logmel.add_argument('--data_type', type=str, required=True, choices=['development', 'leaderboard', 'evaluation'])
+    parser_logmel.add_argument('--workspace', type=str, required=True)
+    parser_logme
