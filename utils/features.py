@@ -263,4 +263,9 @@ if __name__ == '__main__':
     parser_logmel.add_argument('--subdir', type=str, required=True)
     parser_logmel.add_argument('--data_type', type=str, required=True, choices=['development', 'leaderboard', 'evaluation'])
     parser_logmel.add_argument('--workspace', type=str, required=True)
-    parser_logme
+    parser_logmel.add_argument('--mini_data', action='store_true', default=False)
+    
+    args = parser.parse_args()
+    
+    if args.mode == 'logmel':
+   
