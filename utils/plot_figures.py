@@ -21,4 +21,8 @@ def plot_logmel(args):
     labels = config.labels
     
     # Paths
-    audio_names = os.
+    audio_names = os.listdir(audios_dir)
+    
+    # Feature extractor
+    feature_extractor = LogMelExtractor(sample_rate=sample_rate, 
+                                
