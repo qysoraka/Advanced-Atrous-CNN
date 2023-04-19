@@ -27,4 +27,11 @@ def plot_logmel(args):
     feature_extractor = LogMelExtractor(sample_rate=sample_rate, 
                                         window_size=window_size, 
                                         overlap=overlap, 
-                                        mel_bins=mel_bins
+                                        mel_bins=mel_bins)
+    
+    feature_list = []
+    
+    # Select one audio per class and extract feature
+    for label in labels:
+        
+        for audio_nam
