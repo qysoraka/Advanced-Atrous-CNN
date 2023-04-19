@@ -14,4 +14,11 @@ def plot_logmel(args):
     audios_dir = args.audios_dir
     
     sample_rate = config.sample_rate
-    window_size = config.window
+    window_size = config.window_size
+    overlap = config.overlap
+    seq_len = config.seq_len
+    mel_bins = config.mel_bins
+    labels = config.labels
+    
+    # Paths
+    audio_names = os.
