@@ -25,4 +25,6 @@ def plot_logmel(args):
     
     # Feature extractor
     feature_extractor = LogMelExtractor(sample_rate=sample_rate, 
-                                
+                                        window_size=window_size, 
+                                        overlap=overlap, 
+                                        mel_bins=mel_bins
