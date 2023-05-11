@@ -34,4 +34,8 @@ def plot_logmel(args):
     # Select one audio per class and extract feature
     for label in labels:
         
-        for audio_nam
+        for audio_name in audio_names:
+        
+            if label in audio_name:
+                
+                audio_path = os.path.join(audios_dir, audi
