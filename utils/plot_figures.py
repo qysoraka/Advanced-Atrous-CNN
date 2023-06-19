@@ -45,3 +45,12 @@ def plot_logmel(args):
                                         feature_extractor=feature_extractor)
                      
                 feature_list.append(feature)
+                                        
+                break
+        
+    # Plot
+    rows_num = 3
+    cols_num = 4
+    n = 0
+    
+    fig, a
