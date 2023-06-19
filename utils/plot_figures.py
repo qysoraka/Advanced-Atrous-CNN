@@ -41,4 +41,7 @@ def plot_logmel(args):
                 audio_path = os.path.join(audios_dir, audio_name)
                 
                 feature = calculate_logmel(audio_path=audio_path, 
-                                        sample_rate=sampl
+                                        sample_rate=sample_rate, 
+                                        feature_extractor=feature_extractor)
+                     
+                feature_list.append(feature)
