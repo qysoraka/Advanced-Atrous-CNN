@@ -53,4 +53,9 @@ def plot_logmel(args):
     cols_num = 4
     n = 0
     
-    fig, a
+    fig, axs = plt.subplots(rows_num, cols_num, figsize=(10, 5))
+    
+    classes_num = len(labels)
+    
+    for n in range(classes_num):
+        row
