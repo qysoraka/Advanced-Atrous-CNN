@@ -58,4 +58,7 @@ def plot_logmel(args):
     classes_num = len(labels)
     
     for n in range(classes_num):
-        row
+        row = n // cols_num
+        col = n % cols_num
+        axs[row, col].matshow(feature_list[n].T, origin='lower', aspect='auto', cmap='jet')
+        axs[row, col].set_title(lab
