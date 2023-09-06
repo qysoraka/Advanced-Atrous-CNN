@@ -61,4 +61,8 @@ def plot_logmel(args):
         row = n // cols_num
         col = n % cols_num
         axs[row, col].matshow(feature_list[n].T, origin='lower', aspect='auto', cmap='jet')
-        axs[row, col].set_title(lab
+        axs[row, col].set_title(labels[n])
+        axs[row, col].set_ylabel('log mel')
+        axs[row, col].yaxis.set_ticks([])
+        axs[row, col].xaxis.set_ticks([0, seq_len])
+        axs[row, col].
