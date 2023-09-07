@@ -68,4 +68,12 @@ def plot_logmel(args):
         axs[row, col].xaxis.set_ticklabels(['0', '10 s'], fontsize='small')
         axs[row, col].xaxis.tick_bottom()
     
-    for n in range(classes_num, rows_num * cols
+    for n in range(classes_num, rows_num * cols_num):
+        row = n // cols_num
+        col = n % cols_num
+        axs[row, col].set_visible(False)
+    
+    fig.tight_layout()
+    plt.show()
+    
+if __name_
