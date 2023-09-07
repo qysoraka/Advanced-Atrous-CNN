@@ -76,4 +76,9 @@ def plot_logmel(args):
     fig.tight_layout()
     plt.show()
     
-if __name_
+if __name__ == '__main__':
+    
+    parser = argparse.ArgumentParser(description='')
+    subparsers = parser.add_subparsers(dest='mode')
+    
+    parser_pl
