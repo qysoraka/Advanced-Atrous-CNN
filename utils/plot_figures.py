@@ -65,4 +65,7 @@ def plot_logmel(args):
         axs[row, col].set_ylabel('log mel')
         axs[row, col].yaxis.set_ticks([])
         axs[row, col].xaxis.set_ticks([0, seq_len])
-        axs[row, col].
+        axs[row, col].xaxis.set_ticklabels(['0', '10 s'], fontsize='small')
+        axs[row, col].xaxis.tick_bottom()
+    
+    for n in range(classes_num, rows_num * cols
