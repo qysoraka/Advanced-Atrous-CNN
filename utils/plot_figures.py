@@ -84,4 +84,10 @@ if __name__ == '__main__':
     parser_plot_logmel = subparsers.add_parser('plot_logmel')
     parser_plot_logmel.add_argument('--audios_dir', type=str, required=True)
     
-    args = parse
+    args = parser.parse_args()
+    
+    if args.mode == 'plot_logmel':
+        plot_logmel(args)
+        
+    else:
+        raise Exception("Incorrect argument
