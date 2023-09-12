@@ -81,4 +81,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     subparsers = parser.add_subparsers(dest='mode')
     
-    parser_pl
+    parser_plot_logmel = subparsers.add_parser('plot_logmel')
+    parser_plot_logmel.add_argument('--audios_dir', type=str, required=True)
+    
+    args = parse
