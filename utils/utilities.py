@@ -180,3 +180,49 @@ def plot_confusion_matrix(confusion_matrix, title, labels, values, path):
         ax.xaxis.set_ticks_position('bottom')
 
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+
+    for n in range(len(values)):
+        plt.text(n - 0.4, n, '{:.2f}'.format(values[n]), color='yellow')
+
+    plt.title(title)
+    plt.xlabel('Predicted')
+    plt.ylabel('Target')
+    plt.tight_layout()
+    fig.savefig(path, bbox_inches='tight')
+#    plt.show()
+
+
+def write_leaderboard_submission(submission_path, audio_names, predictions):
+    
+    ix_to_lb = config.ix_to_lb
+    
+    f = open(submission_path, 'w')	
+    f.write('Id,Scene_label\n')
+    
+    for n in range(len(audio_names)):
+        f.write('{}'.format(os.path.splitext(audio_names[n])[0]))
+        f.write(',')
+        f.write(ix_to_lb[predictions[n]])
+        f.write('\n')
+        
+    f.close()
+    
+    logging.info('Write result to {}'.format(submission_path))
+    
+     
+def write_evaluation_submission(submission_path, audio_names, predictions):
+    
+    ix_to_lb = config.ix_to_lb
+    
+    f = open(submission_path, 'w')	
+    
+    for n in range(len(audio_names)):
+        f.write('audio/{}'.format(audio_names[n]))
+        f.write('\t')
+        f.write(ix_to_lb[predictions[n]])
+        f.write('\n')
+        
+    f.close()
+    
+    logging.info('Write result to {}'.format(submission_path))
