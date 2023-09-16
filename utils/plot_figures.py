@@ -90,4 +90,4 @@ if __name__ == '__main__':
         plot_logmel(args)
         
     else:
-        raise Exception("Incorrect argument
+        raise Exception("Incorrect arguments!")
