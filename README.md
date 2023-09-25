@@ -31,4 +31,11 @@ sh runme.sh
 
 In runme.sh, please run the following files for different tasks:
 1. feature extraction: utils/features.py
-2. training a model, 
+2. training a model, and evaluation: main_pytorch.py
+
+# Cite
+
+If the user referred the code, please cite the original paper,
+
+@InProceedings{ren2019attention,
+  Title     
