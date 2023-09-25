@@ -16,4 +16,15 @@ channels:
   - pytorch
 dependencies:
   - matplotlib=2.2.2
-  - numpy=1.1
+  - numpy=1.14.5
+  - h5py=2.8.0
+  - pytorch=0.4.0
+  - pip:
+    - audioread==2.1.6
+    - librosa==0.6.1
+    - scikit-learn==0.19.1
+    - soundfile==0.10.2
+
+# Run 
+
+sh
