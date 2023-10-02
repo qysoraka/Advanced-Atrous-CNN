@@ -38,4 +38,5 @@ In runme.sh, please run the following files for different tasks:
 If the user referred the code, please cite the original paper,
 
 @InProceedings{ren2019attention,
-  Title     
+  Title                    = {{Attention-based atrous convolutional neural networks: Visualisation and understanding perspectives of acoustic scenes}},
+  Auth
