@@ -41,3 +41,13 @@ If the user referred the code, please cite the original paper,
   Title                    = {{Attention-based atrous convolutional neural networks: Visualisation and understanding perspectives of acoustic scenes}},
   Author                   = {Ren, Zhao and Kong, Qiuqiang and Han, Jing and Plumbley, Mark and Schuller, Bj"orn},
   Booktitle                = {Proc.\ ICASSP},
+  Year                     = {2019},
+  Address                  = {Brighton, UK},
+  Pages                    = {56--60}
+}
+
+
+
+Owner: qysoraka
+
+07.08.2019
