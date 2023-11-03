@@ -39,4 +39,5 @@ If the user referred the code, please cite the original paper,
 
 @InProceedings{ren2019attention,
   Title                    = {{Attention-based atrous convolutional neural networks: Visualisation and understanding perspectives of acoustic scenes}},
-  Auth
+  Author                   = {Ren, Zhao and Kong, Qiuqiang and Han, Jing and Plumbley, Mark and Schuller, Bj"orn},
+  Booktitle                = {Proc.\ ICASSP},
